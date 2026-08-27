@@ -1,0 +1,10 @@
+diffusers>=0.31.0
+transformers>=4.44.0
+accelerate>=0.33.0
+bitsandbytes>=0.43.0
+safetensors
+sentencepiece
+protobuf
+pyyaml
+huggingface_hub
+Pillow

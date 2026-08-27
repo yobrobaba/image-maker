@@ -1,0 +1,36 @@
+# -----------------------------------------------------------------------
+# Central config — change model or generation params here, not in the notebook.
+# -----------------------------------------------------------------------
+
+model:
+  # Swap this to try other models. Must be a diffusers-compatible SD3-family
+  # or FLUX repo id. See README for FLUX notes (gating/license differ).
+  id: "stabilityai/stable-diffusion-3.5-medium"
+  quantization: "nf4"        # nf4 | int8 | none
+  dtype: "bfloat16"          # bfloat16 recommended on T4
+
+generation:
+  txt2img:
+    num_inference_steps: 28
+    guidance_scale: 4.5
+    height: 1024
+    width: 1024
+
+  img2img:
+    num_inference_steps: 28
+    strength: 0.6            # 0 = ignore input image, 1 = ignore prompt
+    guidance_scale: 4.5
+
+  inpaint:
+    num_inference_steps: 28
+    strength: 0.85
+    guidance_scale: 4.5
+
+output:
+  dir: "outputs"
+  save_format: "png"
+
+memory:
+  enable_cpu_offload: true   # required to fit on T4 (16GB)
+  enable_vae_slicing: true
+  enable_vae_tiling: true
